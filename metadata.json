@@ -1,0 +1,8 @@
+{
+  "name": "Copy of accesorios18 - Macramé Jewelry Configurator",
+  "description": "An elegant, artisanal macramé jewelry shop featuring a custom configurator for personalized bracelets and an AI-powered shopping assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
