@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
+import { useCart } from '../context/CartContext';
 import { Icon } from '../components/Icon';
 import { COLORS, CHARMS, IMAGES } from '../constants';
 import { ThreadColor } from '../types';
@@ -10,6 +11,7 @@ const Product: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<ThreadColor>(COLORS[0]);
   const [selectedCharms, setSelectedCharms] = useState<string[]>(['heart', 'star']);
   const [message, setMessage] = useState("Conectados para siempre por este hilo. Te amo siempre.");
+  const { addToCart } = useCart();
 
   const toggleCharm = (id: string) => {
     if (selectedCharms.includes(id)) {
@@ -30,7 +32,7 @@ const Product: React.FC = () => {
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen">
       <Header />
-      
+
       <main className="max-w-[1440px] mx-auto px-6 lg:px-12 pt-32 pb-24">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em] text-stone-400 mb-16">
@@ -40,16 +42,16 @@ const Product: React.FC = () => {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-28">
-          
+
           {/* Gallery Side */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="relative bg-stone-100 dark:bg-surface-dark rounded-[2rem] overflow-hidden shadow-2xl aspect-square">
-              <img 
-                alt="Visualizador de producto" 
-                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" 
-                src={IMAGES.productMain} 
+              <img
+                alt="Visualizador de producto"
+                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                src={IMAGES.productMain}
               />
-              
+
               {/* Floating Message Preview */}
               <div className="absolute top-10 right-10 animate-fade-in-up">
                 <div className="bg-white/95 dark:bg-surface-dark/95 backdrop-blur-xl p-8 rounded-3xl shadow-2xl max-w-[280px] border border-stone-100/50 dark:border-white/5">
@@ -73,7 +75,7 @@ const Product: React.FC = () => {
             <div className="grid grid-cols-4 gap-6">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="aspect-square bg-stone-100 dark:bg-surface-dark rounded-2xl overflow-hidden border-2 border-transparent hover:border-primary transition-all cursor-pointer shadow-md">
-                  <img src={`https://picsum.photos/600/600?sig=${i+20}`} className="w-full h-full object-cover" />
+                  <img src={`https://picsum.photos/600/600?sig=${i + 20}`} className="w-full h-full object-cover" />
                 </div>
               ))}
               <div className="aspect-square bg-primary/5 rounded-2xl flex flex-col items-center justify-center text-primary cursor-pointer border-2 border-dashed border-primary/30 group hover:bg-primary/10 transition-colors">
@@ -90,7 +92,7 @@ const Product: React.FC = () => {
               <div className="space-y-6 border-b border-stone-100 dark:border-stone-800 pb-12">
                 <div className="flex items-center gap-4 text-accent-gold">
                   <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map(i => <Icon key={i} name="star" className="text-lg" fill />)}
+                    {[1, 2, 3, 4, 5].map(i => <Icon key={i} name="star" className="text-lg" fill />)}
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-stone-400">(48 Reseñas)</span>
                 </div>
@@ -113,12 +115,11 @@ const Product: React.FC = () => {
                   </div>
                   <div className="flex flex-wrap gap-5">
                     {COLORS.map(color => (
-                      <button 
+                      <button
                         key={color.id}
                         onClick={() => setSelectedColor(color)}
-                        className={`size-14 rounded-full relative transition-all duration-500 hover:scale-110 flex items-center justify-center shadow-lg ${
-                          selectedColor.id === color.id ? 'ring-2 ring-primary ring-offset-4 dark:ring-offset-background-dark scale-110' : 'hover:ring-2 hover:ring-stone-200'
-                        } ${color.border ? 'border border-stone-200' : ''}`}
+                        className={`size-14 rounded-full relative transition-all duration-500 hover:scale-110 flex items-center justify-center shadow-lg ${selectedColor.id === color.id ? 'ring-2 ring-primary ring-offset-4 dark:ring-offset-background-dark scale-110' : 'hover:ring-2 hover:ring-stone-200'
+                          } ${color.border ? 'border border-stone-200' : ''}`}
                         style={{ backgroundColor: color.hex }}
                       >
                         {selectedColor.id === color.id && (
@@ -135,7 +136,7 @@ const Product: React.FC = () => {
                     <label className="text-[11px] font-black text-text-main dark:text-white uppercase tracking-[0.3em]">2. Dijes con Significado</label>
                     <span className="text-[11px] text-primary font-black uppercase tracking-widest">{selectedCharms.length}/5 añadidos</span>
                   </div>
-                  
+
                   {/* Selected Bar */}
                   <div className="relative h-28 bg-stone-50 dark:bg-surface-dark rounded-[2rem] border border-dashed border-stone-200 dark:border-stone-800 flex items-center justify-center px-10 overflow-hidden shadow-inner">
                     <div className="absolute inset-x-0 h-1.5 z-0" style={{ backgroundColor: selectedColor.hex }}></div>
@@ -166,14 +167,13 @@ const Product: React.FC = () => {
                     {CHARMS.map(charm => {
                       const active = selectedCharms.includes(charm.id);
                       return (
-                        <button 
+                        <button
                           key={charm.id}
                           onClick={() => toggleCharm(charm.id)}
-                          className={`aspect-square rounded-2xl border-2 flex flex-col items-center justify-center gap-3 p-3 transition-all duration-500 group shadow-sm ${
-                            active 
-                              ? 'border-primary bg-primary/5 scale-95' 
-                              : 'border-stone-100 dark:border-stone-800 hover:border-primary/50 hover:bg-stone-50 dark:hover:bg-stone-800 hover:-translate-y-1'
-                          }`}
+                          className={`aspect-square rounded-2xl border-2 flex flex-col items-center justify-center gap-3 p-3 transition-all duration-500 group shadow-sm ${active
+                            ? 'border-primary bg-primary/5 scale-95'
+                            : 'border-stone-100 dark:border-stone-800 hover:border-primary/50 hover:bg-stone-50 dark:hover:bg-stone-800 hover:-translate-y-1'
+                            }`}
                         >
                           <Icon name={charm.icon} className={`text-3xl transition-all group-hover:scale-110 ${active ? 'text-primary' : 'text-stone-400'}`} fill={active} />
                           <span className={`text-[9px] font-black uppercase tracking-[0.1em] ${active ? 'text-primary' : 'text-stone-400'}`}>
@@ -188,7 +188,7 @@ const Product: React.FC = () => {
                 {/* Step 3: Message */}
                 <div className="space-y-8">
                   <label className="text-[11px] font-black text-text-main dark:text-white uppercase tracking-[0.3em]">3. La Dedicatoria</label>
-                  <textarea 
+                  <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full h-40 rounded-[2rem] bg-stone-50 dark:bg-surface-dark border-transparent focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-stone-900 transition-all p-8 text-lg font-display-serif italic shadow-inner"
@@ -201,7 +201,14 @@ const Product: React.FC = () => {
 
                 {/* CTA */}
                 <div className="pt-12 border-t border-stone-100 dark:border-stone-800 space-y-6">
-                  <button className="w-full h-20 bg-primary hover:bg-primary-dark text-white rounded-full font-black uppercase tracking-[0.3em] text-[11px] transition-all shadow-2xl shadow-primary/30 flex items-center justify-between px-12 group active:scale-95">
+                  <button
+                    onClick={() => addToCart({ name: "Pulsera Personalizada", price: currentPrice }, {
+                      color: selectedColor,
+                      charms: selectedCharms,
+                      message
+                    })}
+                    className="w-full h-20 bg-primary hover:bg-primary-dark text-white rounded-full font-black uppercase tracking-[0.3em] text-[11px] transition-all shadow-2xl shadow-primary/30 flex items-center justify-between px-12 group active:scale-95"
+                  >
                     <span>Añadir al Carrito</span>
                     <div className="flex items-center gap-6">
                       <span className="opacity-30 font-normal">|</span>
