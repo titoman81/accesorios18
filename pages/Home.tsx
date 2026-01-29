@@ -24,7 +24,7 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-rose-200/5 mix-blend-color pointer-events-none"></div>
         </div>
 
-        <div className="relative z-10 h-full flex flex-col justify-between pb-24 lg:pb-32 max-w-[1600px] mx-auto px-6 lg:px-12">
+        <div className="relative z-10 h-full flex flex-col justify-between pb-12 lg:pb-32 max-w-[1600px] mx-auto px-6 lg:px-12">
           {/* Spacer to push content below header */}
           <div className="h-16 md:h-20 flex-shrink-0">&nbsp;</div>
 
@@ -32,23 +32,23 @@ const Home: React.FC = () => {
             <span className="inline-block py-1.5 px-5 border border-white/30 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-6 bg-white/10">
               Artesanía Venezolana de Lujo
             </span>
-            <h1 className="text-5xl md:text-8xl lg:text-9xl font-display-serif font-medium mb-8 leading-tight tracking-tighter">
-              Tejiendo Tu <br />
+            <h1 className="text-5xl md:text-8xl lg:text-9xl font-display-serif font-medium mb-8 leading-tight tracking-tighter break-words">
+              Tejiendo Tu <br className="hidden md:block" />
               <span className="italic font-light">Propia <span className="text-white italic" style={{ textShadow: '0 0 6px rgba(194, 178, 128, 0.8), 0 0 12px rgba(194, 178, 128, 0.4)' }}>Historia</span></span>
             </h1>
             <p className="text-lg md:text-2xl font-display-serif font-light text-white/90 mb-10 max-w-lg leading-relaxed italic">
               Joyería artesanal de macramé con dijes que significan algo. Montadas en tarjetas que hablan el lenguaje del corazón.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
               <button
-                onClick={() => navigate('/product')}
-                className="bg-white text-text-main hover:bg-primary hover:text-white px-12 py-5 rounded-none transition-all duration-500 font-black tracking-widest uppercase text-[11px] shadow-2xl"
+                onClick={() => navigate('/diario')}
+                className="bg-white text-text-main hover:bg-primary hover:text-white px-8 md:px-12 py-4 md:py-5 rounded-none transition-all duration-500 font-black tracking-widest uppercase text-[10px] md:text-[11px] shadow-2xl w-full sm:w-auto text-center"
               >
                 Ver Novedades
               </button>
               <button
-                onClick={() => navigate('/product')}
-                className="flex items-center gap-5 text-white px-8 py-5 transition-all duration-300 font-bold tracking-widest uppercase text-[11px] group/btn"
+                onClick={() => navigate('/colecciones')}
+                className="flex items-center justify-center sm:justify-start gap-5 text-white px-8 py-5 transition-all duration-300 font-bold tracking-widest uppercase text-[10px] md:text-[11px] group/btn w-full sm:w-auto"
               >
                 <span>Explorar Colección</span>
                 <Icon name="arrow_forward" className="text-xl group-hover/btn:translate-x-3 transition-transform" />
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Philosophy */}
-      <section className="py-40 px-6 bg-background-light dark:bg-background-dark">
+      <section className="py-20 md:py-40 px-6 bg-background-light dark:bg-background-dark">
         <div className="max-w-[1000px] mx-auto text-center">
           <span className="text-primary font-bold tracking-[0.4em] uppercase text-[11px] mb-10 block">Nuestra Filosofía</span>
           <h2 className="text-4xl md:text-7xl font-display-serif font-normal mb-14 text-text-main dark:text-white leading-tight">
@@ -75,15 +75,15 @@ const Home: React.FC = () => {
       {/* Categories */}
       <section className="pb-40 px-4 lg:px-8">
         <div className="max-w-[1600px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 px-6 gap-6">
-            <h2 className="text-5xl md:text-6xl font-display-serif font-medium text-text-main dark:text-white tracking-tighter">Momentos de Vida</h2>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 px-2 md:px-6 gap-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display-serif font-medium text-text-main dark:text-white tracking-tighter">Momentos de Vida</h2>
             <Link to="/product" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all group">
               Explorar Categorías
               <Icon name="arrow_forward" className="text-xl group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 auto-rows-[350px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
             <div
               onClick={() => navigate('/colecciones', { state: { scrollTo: 'parejas' } })}
               className="lg:col-span-8 lg:row-span-2 relative group overflow-hidden rounded-xl cursor-pointer min-h-[600px] shadow-xl"
@@ -92,10 +92,10 @@ const Home: React.FC = () => {
                 <div className="w-full h-full bg-cover bg-center hover-zoom-img" style={{ backgroundImage: `url('${IMAGES.couples}')` }}></div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="absolute bottom-0 left-0 p-12 md:p-20 w-full text-white">
-                <span className="text-white/80 font-serif italic text-3xl mb-6 block">Para ustedes dos</span>
-                <h3 className="text-6xl md:text-8xl font-display-serif mb-8 tracking-tighter">Colección Parejas</h3>
-                <p className="text-white/90 font-body text-xl mb-10 max-w-lg hidden md:block opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-1000">
+              <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-20 w-full text-white">
+                <span className="text-white/80 font-serif italic text-2xl md:text-3xl mb-4 md:mb-6 block">Para ustedes dos</span>
+                <h3 className="text-4xl md:text-6xl lg:text-8xl font-display-serif mb-6 md:mb-8 tracking-tighter">Colección Parejas</h3>
+                <p className="text-white/90 font-body text-lg md:text-xl mb-8 md:mb-10 max-w-lg hidden md:block opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-1000">
                   Corazones conectados. Dijes magnéticos que se unen sobre hilos personalizados.
                 </p>
                 <div className="inline-block border-b-2 border-white pb-3 text-[11px] font-black uppercase tracking-[0.3em] group-hover:text-primary group-hover:border-primary transition-all">Comprar Parejas</div>
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
 
             <div
               onClick={() => navigate('/colecciones', { state: { scrollTo: 'graduacion' } })}
-              className="lg:col-span-4 lg:row-span-1 relative group overflow-hidden rounded-xl cursor-pointer shadow-lg"
+              className="lg:col-span-4 lg:row-span-1 relative group overflow-hidden rounded-xl cursor-pointer shadow-lg h-[350px]"
             >
               <div className="absolute inset-0 bg-stone-200">
                 <div className="w-full h-full bg-cover bg-center hover-zoom-img" style={{ backgroundImage: `url('${IMAGES.graduations}')` }}></div>
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
 
             <div
               onClick={() => navigate('/colecciones', { state: { scrollTo: 'deporte' } })}
-              className="lg:col-span-4 lg:row-span-1 relative group overflow-hidden rounded-xl cursor-pointer shadow-lg"
+              className="lg:col-span-4 lg:row-span-1 relative group overflow-hidden rounded-xl cursor-pointer shadow-lg h-[350px]"
             >
               <div className="absolute inset-0 bg-stone-200">
                 <div className="w-full h-full bg-cover bg-center hover-zoom-img" style={{ backgroundImage: `url('${IMAGES.hobbies}')` }}></div>
@@ -131,21 +131,21 @@ const Home: React.FC = () => {
             </div>
 
             <div
-              onClick={() => navigate('/colecciones', { state: { scrollTo: 'musica' } })}
-              className="lg:col-span-12 lg:row-span-1 relative bg-[#E8F0E9] dark:bg-surface-dark rounded-xl overflow-hidden flex flex-col md:flex-row items-center border border-stone-100 dark:border-stone-800 shadow-xl cursor-pointer group"
+              onClick={() => navigate('/colecciones', { state: { scrollTo: 'amuletos' } })}
+              className="lg:col-span-12 lg:row-span-1 relative bg-red-50 dark:bg-surface-dark rounded-xl overflow-hidden flex flex-col md:flex-row items-center border border-stone-100 dark:border-stone-800 shadow-xl cursor-pointer group"
             >
-              <div className="w-full md:w-1/2 p-16 md:p-32 flex flex-col justify-center items-start">
+              <div className="w-full md:w-1/2 p-8 md:p-16 lg:p-32 flex flex-col justify-center items-start order-2 md:order-1">
                 <span className="text-primary font-bold tracking-[0.4em] uppercase text-[11px] mb-8">Novedad Exclusiva</span>
-                <h3 className="text-5xl md:text-7xl font-display-serif text-text-main dark:text-white mb-10 tracking-tighter">Serie 'Amor Aguacate'</h3>
+                <h3 className="text-5xl md:text-7xl font-display-serif text-text-main dark:text-white mb-10 tracking-tighter">Serie 'Amuletos'</h3>
                 <p className="text-stone-600 dark:text-stone-300 font-body mb-12 text-2xl max-w-lg leading-relaxed">
-                  Divertida, fresca y llena de personalidad. Pulseras tejidas a mano con adorables aguacates en tarjetas vibrantes.
+                  Símbolos de protección y suerte tejidos a mano. Lleva contigo la energía positiva en hilos rojos vibrantes.
                 </p>
                 <div className="border-b-2 border-text-main dark:border-white text-text-main dark:text-white pb-3 group-hover:text-primary group-hover:border-primary transition-all text-[11px] font-black uppercase tracking-[0.3em]">
                   Ver Colección
                 </div>
               </div>
-              <div className="w-full md:w-1/2 h-96 md:h-full relative overflow-hidden">
-                <div className="w-full h-full bg-cover bg-center hover-zoom-img" style={{ backgroundImage: `url('${IMAGES.avocado}')` }}></div>
+              <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden order-1 md:order-2">
+                <div className="w-full h-full bg-cover hover-zoom-img" style={{ backgroundImage: `url('${IMAGES.amuletos}')`, backgroundPosition: 'center 100%' }}></div>
               </div>
             </div>
           </div>

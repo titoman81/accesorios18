@@ -101,8 +101,8 @@ const Collections: React.FC = () => {
                         <button
                             onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                             className={`inline-flex items-center gap-3 px-8 py-3 rounded-full transition-all border ${showFavoritesOnly
-                                    ? 'bg-red-500 border-red-500 text-white shadow-lg'
-                                    : 'bg-transparent border-stone-200 dark:border-white/10 text-stone-500 hover:border-red-500 hover:text-red-500'
+                                ? 'bg-red-500 border-red-500 text-white shadow-lg'
+                                : 'bg-transparent border-stone-200 dark:border-white/10 text-stone-500 hover:border-red-500 hover:text-red-500'
                                 }`}
                         >
                             <Icon name={showFavoritesOnly ? "favorite" : "favorite_border"} className="text-lg" />

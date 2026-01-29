@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
           {/* Logo */}
           <div className="flex items-center gap-4 absolute left-1/2 -translate-x-1/2 lg:static lg:transform-none lg:flex-1">
             <img src="/favicon.svg" alt="Logo" className={`h-8 w-8 object-contain ${isMenuOpen ? 'animate-none' : ''}`} />
-            <Link to="/" className="text-2xl md:text-3xl font-display-serif font-bold tracking-tighter hover:opacity-80 transition-opacity">
+            <Link to="/" className="hidden sm:block text-2xl md:text-3xl font-display-serif font-bold tracking-tighter hover:opacity-80 transition-opacity">
               accesorios18
             </Link>
           </div>
@@ -79,9 +79,6 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
 
           {/* Iconos de Acción */}
           <div className="flex flex-1 justify-end items-center gap-1 md:gap-4 relative z-[70]">
-            <button className="p-2.5 hover:text-primary transition-all hover:scale-110">
-              <Icon name="search" className="font-light text-2xl" />
-            </button>
             {user ? (
               <div className="flex items-center gap-2">
                 <div className="flex flex-col items-end hidden md:flex">
@@ -152,7 +149,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
         <div className="absolute inset-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-2xl"></div>
 
         {/* Contenido del Menú */}
-        <div className="relative h-full flex flex-col items-center justify-center p-8 space-y-12">
+        <div className="relative h-full w-full flex flex-col items-center justify-start pt-32 pb-12 px-8 space-y-8 overflow-y-auto">
           {menuItems.map((item, index) => (
             <Link
               key={item.label}

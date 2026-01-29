@@ -388,10 +388,10 @@ const AdminDashboard: React.FC = () => {
         <div className="min-h-screen bg-stone-50 dark:bg-background-dark">
             <Header />
 
-            <main className="max-w-[1400px] mx-auto pt-32 pb-20 px-6">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-16">
+            <main className="max-w-[1400px] mx-auto pt-24 md:pt-32 pb-20 px-4 md:px-6">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10 md:mb-16">
                     <div>
-                        <h1 className="text-5xl font-display-serif italic mb-2 tracking-tighter">Panel de Gestión</h1>
+                        <h1 className="text-4xl md:text-5xl font-display-serif italic mb-2 tracking-tighter">Panel de Gestión</h1>
                         <p className="text-stone-500 font-light">Control total de tu inventario y ventas</p>
                     </div>
 
@@ -449,10 +449,10 @@ const AdminDashboard: React.FC = () => {
                 {view === 'products' ? (
                     <>
                         {isBulkAdding && (
-                            <section className="bg-white dark:bg-stone-900 rounded-[2.5rem] p-10 mb-16 shadow-2xl border border-stone-100 dark:border-white/5 animate-fade-in">
-                                <div className="flex justify-between items-center mb-10">
-                                    <h2 className="text-3xl font-display-serif italic">Carga Masiva de Productos</h2>
-                                    <label className="bg-primary text-white px-8 py-4 rounded-full font-black uppercase tracking-widest text-[10px] cursor-pointer hover:scale-105 transition-all shadow-lg">
+                            <section className="bg-white dark:bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 mb-16 shadow-2xl border border-stone-100 dark:border-white/5 animate-fade-in">
+                                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                                    <h2 className="text-2xl md:text-3xl font-display-serif italic">Carga Masiva de Productos</h2>
+                                    <label className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-black uppercase tracking-widest text-[10px] cursor-pointer hover:scale-105 transition-all shadow-lg w-full md:w-auto text-center">
                                         <Icon name="upload_file" className="inline mr-2" /> Seleccionar Fotos
                                         <input type="file" multiple accept="image/*" className="hidden" onChange={handleBulkFileChange} />
                                     </label>
@@ -537,8 +537,8 @@ const AdminDashboard: React.FC = () => {
                         )}
 
                         {isAdding && (
-                            <section className="bg-white dark:bg-stone-900 rounded-[2.5rem] p-10 mb-16 shadow-2xl border border-stone-100 dark:border-white/5 animate-fade-in">
-                                <h2 className="text-3xl font-display-serif mb-10 italic">{editingId ? 'Editar Pieza' : 'Añadir Nueva Pieza'}</h2>
+                            <section className="bg-white dark:bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 mb-16 shadow-2xl border border-stone-100 dark:border-white/5 animate-fade-in">
+                                <h2 className="text-2xl md:text-3xl font-display-serif mb-10 italic">{editingId ? 'Editar Pieza' : 'Añadir Nueva Pieza'}</h2>
                                 <form onSubmit={handleAddProduct} className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                     <div className="space-y-8">
                                         <div>
@@ -640,10 +640,10 @@ const AdminDashboard: React.FC = () => {
                                 <table className="w-full text-left">
                                     <thead>
                                         <tr className="border-b border-stone-100 dark:border-white/5">
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Pieza</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Colección</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Precio</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40 text-right">Manejo</th>
+                                            <th className="px-6 md:px-10 py-6 md:py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40 min-w-[200px]">Pieza</th>
+                                            <th className="px-6 md:px-10 py-6 md:py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Colección</th>
+                                            <th className="px-6 md:px-10 py-6 md:py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Precio</th>
+                                            <th className="px-6 md:px-10 py-6 md:py-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40 text-right">Manejo</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-stone-50 dark:divide-white/5">
@@ -708,7 +708,7 @@ const AdminDashboard: React.FC = () => {
                             </div>
                         ) : (
                             orders.map((order) => (
-                                <div key={order.id} className="bg-white dark:bg-stone-900 rounded-[2.5rem] p-10 shadow-xl border border-stone-100 dark:border-white/5 overflow-hidden">
+                                <div key={order.id} className="bg-white dark:bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-xl border border-stone-100 dark:border-white/5 overflow-hidden">
                                     <div className="flex flex-col lg:flex-row justify-between gap-8 mb-10 pb-10 border-b border-stone-50 dark:border-white/5">
                                         <div className="space-y-4">
                                             <div className="flex items-center gap-4">
